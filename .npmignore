@@ -1,0 +1,2 @@
+# Testes não vão no pacote publicado (rodam só no dev/CI deste repo).
+**/*.test.js

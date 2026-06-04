@@ -1,7 +1,7 @@
 {
   "name": "rpgterm-engine",
-  "version": "0.1.0",
-  "description": "Pure logic engine of the Immersive Terminal for RPGs (rpgterm): virtual filesystem, command interpreter, crack/tracer/decrypt mechanics, scenario composition. No DOM, no React.",
+  "version": "0.1.1",
+  "description": "Pure logic engine of the Immersive Terminal for RPGs: virtual filesystem, command interpreter, crack/tracer/decrypt mechanics, scenario composition. No DOM, no React.",
   "type": "module",
   "license": "MIT",
   "author": "Felipe Lippelt",

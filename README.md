@@ -1,7 +1,7 @@
 # rpgterm-engine
 
-Motor de lógica pura do [Immersive Terminal for RPGs](https://github.com/flippelt/Immersive-Terminal-for-RPGs)
-(`rpgterm`), extraído para ser fonte única — consumido tanto pelo terminal
+Motor de lógica pura do [Immersive Terminal for RPGs](https://github.com/flippelt/Immersive-Terminal-for-RPGs),
+extraído para ser fonte única — consumido tanto pelo terminal
 quanto pelo editor [scenario-forge](https://github.com/flippelt/scenario-forge),
 acabando com o risco de divergência de schema.
 
