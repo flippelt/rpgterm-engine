@@ -1,5 +1,5 @@
 // Public API of rpgterm-engine — the pure logic of the Immersive Terminal for
-// RPGs / rpgterm, extracted so the terminal and the scenario-forge editor share
+// RPGs, extracted so the terminal and the scenario-forge editor share
 // one source of truth (no schema drift). No DOM, no React, no audio: the host
 // injects audio/persistence via ctx (see commands.js).
 
