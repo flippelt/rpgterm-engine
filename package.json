@@ -6,7 +6,7 @@
   "license": "MIT",
   "author": "Felipe Lippelt",
   "keywords": ["terminal", "ttrpg", "rpg", "tabletop", "engine", "hacking"],
-  "files": ["src"],
+  "files": ["src", "!src/**/*.test.js"],
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
