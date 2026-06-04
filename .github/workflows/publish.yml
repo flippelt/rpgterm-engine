@@ -1,0 +1,22 @@
+name: publish
+
+# Publica no npm ao empurrar uma tag v* (ex.: npm version patch && git push --follow-tags).
+# Requer o secret NPM_TOKEN (npmjs.com → Access Tokens → Automation).
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install
+      - run: npm test
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
