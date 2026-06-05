@@ -1,11 +1,17 @@
 {
   "name": "rpgterm-engine",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Pure logic engine of the Immersive Terminal for RPGs: virtual filesystem, command interpreter, crack/tracer/decrypt mechanics, scenario composition. No DOM, no React.",
   "type": "module",
   "license": "MIT",
   "author": "Felipe Lippelt",
   "keywords": ["terminal", "ttrpg", "rpg", "tabletop", "engine", "hacking"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flippelt/rpgterm-engine.git"
+  },
+  "homepage": "https://github.com/flippelt/rpgterm-engine#readme",
+  "bugs": "https://github.com/flippelt/rpgterm-engine/issues",
   "files": ["src", "!src/**/*.test.js"],
   "exports": {
     ".": {
