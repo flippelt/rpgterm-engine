@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/flippelt/rpgterm-engine/schema/scenario.schema.json",
+  "title": "rpgterm-engine scenario",
+  "description": "Contract for scenario.json and for a GM-authored runtime bundle. `files` is required on a pasted/shared bundle and absent on a repo scenario.json (the host builds the VFS from the files/ tree). Extra keys are allowed so authoring tools can round-trip unknown fields.",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string" },
+    "theme": {
+      "type": "string",
+      "description": "Skin id from THEME_REGISTRY. Unknown ids fall back to ibm."
+    },
+    "header": { "type": "string" },
+    "prompt": { "type": "string" },
+    "user": { "type": "string" },
+    "boot": { "$ref": "#/$defs/lines" },
+    "motd": { "$ref": "#/$defs/stringList" },
+    "banner": { "type": "string" },
+    "login": { "$ref": "#/$defs/login" },
+    "tracer": { "$ref": "#/$defs/tracer" },
+    "selfDestruct": { "$ref": "#/$defs/selfDestruct" },
+    "dialog": { "$ref": "#/$defs/dialog" },
+    "events": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/lines" },
+      "description": "VFS path → lines fired when that file is unlocked/read."
+    },
+    "aliases": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "locks": { "type": "object" },
+    "commands": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/lines" }
+    },
+    "checkMisleadsOnFail": { "type": "boolean" },
+    "files": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "Bundle-only: VFS path → raw file text (front-matter included)."
+    },
+    "i18n": {
+      "type": "object",
+      "additionalProperties": { "type": "object" },
+      "description": "lang code → partial override of this object. `files` inside a locale maps path → translated body."
+    },
+    "palette": { "type": "object" },
+    "font": { "type": "string" },
+    "fontSize": { "type": "string" },
+    "crt": { "type": "object" },
+    "screensaver": { "type": "string" },
+    "sounds": { "type": "object" },
+    "unknownHint": { "type": "string" },
+    "extraHelp": { "$ref": "#/$defs/stringList" }
+  },
+  "$defs": {
+    "stringList": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "line": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "text": { "type": "string" },
+            "type": { "type": "string" },
+            "instant": { "type": "boolean" },
+            "duration": { "type": "number" },
+            "label": { "type": "string" },
+            "from": { "type": "number" },
+            "interval": { "type": "number" },
+            "alarm": { "type": "boolean" },
+            "src": { "type": "string" },
+            "alt": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "lines": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/line" }
+    },
+    "login": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "title": { "type": "string" },
+        "label": { "type": "string" },
+        "password": { "type": "string" },
+        "granted": { "type": "string" },
+        "denied": { "type": "string" }
+      }
+    },
+    "tracer": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "seconds": { "type": "number" },
+        "penalty": { "type": "number" },
+        "startAfter": { "type": "number" },
+        "nocrackSeconds": { "type": "number" },
+        "label": { "type": "string" },
+        "active": { "type": "string" },
+        "complete": { "type": "string" },
+        "evaded": { "type": "string" },
+        "checkAlert": { "type": "string" },
+        "caught": { "type": "object" }
+      }
+    },
+    "selfDestruct": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "from": { "type": "number" },
+        "interval": { "type": "number" },
+        "override": { "type": "string" },
+        "armed": { "type": "string" },
+        "label": { "type": "string" },
+        "aborted": { "oneOf": [{ "type": "string" }, { "$ref": "#/$defs/stringList" }] },
+        "detonate": { "oneOf": [{ "type": "string" }, { "$ref": "#/$defs/stringList" }] }
+      }
+    },
+    "dialog": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "thinking": { "oneOf": [{ "type": "string" }, { "$ref": "#/$defs/stringList" }] },
+        "fallback": { "oneOf": [{ "type": "string" }, { "$ref": "#/$defs/stringList" }] },
+        "empty": { "oneOf": [{ "type": "string" }, { "$ref": "#/$defs/stringList" }] },
+        "responses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "match": { "$ref": "#/$defs/stringList" },
+              "type": { "type": "string" },
+              "lines": { "$ref": "#/$defs/stringList" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -29,7 +29,19 @@ export {
   parseFrontMatter,
   buildFilesystem,
   composeCustomScenario,
+  composeTheme,
+  applyI18n,
+  localizeScenario,
+  mergeScenario,
   THEME_REGISTRY,
   THEMES
 } from './engine/scenario.js'
+export {
+  validateBundle,
+  validateScenario,
+  validateFrontMatter,
+  validateAgainstSchema,
+  scenarioSchema,
+  frontmatterSchema
+} from './schema/validate.js'
 export { makeT, SUPPORTED_LANGS } from './i18n/ui.js'

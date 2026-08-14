@@ -1,6 +1,6 @@
 {
   "name": "rpgterm-engine",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Pure logic engine of the Immersive Terminal for RPGs: virtual filesystem, command interpreter, crack/tracer/decrypt mechanics, scenario composition. No DOM, no React.",
   "type": "module",
   "license": "MIT",
@@ -17,7 +17,9 @@
     ".": {
       "types": "./src/index.d.ts",
       "import": "./src/index.js"
-    }
+    },
+    "./schema": "./src/schema/scenario.schema.json",
+    "./schema/frontmatter": "./src/schema/frontmatter.schema.json"
   },
   "types": "./src/index.d.ts",
   "scripts": {

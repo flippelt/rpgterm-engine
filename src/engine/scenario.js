@@ -14,6 +14,7 @@ import cyberpunk from '../themes/cyberpunk.json'
 import dataslate from '../themes/dataslate.json'
 import ibm from '../themes/ibm.json'
 import { pickWord } from './wordle.js'
+import { validateBundle } from '../schema/validate.js'
 
 const THEME_LIST = [alien, lancer, bladerunner, wh40k, fallout, cyberpunk, dataslate, ibm]
 export const THEME_REGISTRY = Object.fromEntries(THEME_LIST.map((t) => [t.id, t]))
@@ -76,7 +77,7 @@ export function buildFilesystem(entries) {
 // --- per-language content ------------------------------------------------
 const isPlainObject = (v) => v != null && typeof v === 'object' && !Array.isArray(v)
 
-function applyI18n(obj, lang) {
+export function applyI18n(obj, lang) {
   const tr = obj?.i18n?.[lang]
   if (!obj?.i18n) return obj
   const out = { ...obj }
@@ -99,7 +100,7 @@ function translateFilesystem(fs, fileOverrides) {
   return next
 }
 
-function localizeScenario(scenario, lang) {
+export function localizeScenario(scenario, lang) {
   const fileOverrides = {
     ...(scenario?._fileI18n?.[lang] ?? {}),
     ...(scenario?.i18n?.[lang]?.files ?? {})
@@ -114,7 +115,7 @@ function localizeScenario(scenario, lang) {
 
 // Merge a theme skin with a scenario's content. Scenario fields override theme
 // defaults; `commands` and `locks` shallow-merge.
-function mergeScenario(theme, scenario) {
+export function mergeScenario(theme, scenario) {
   return {
     ...theme,
     scenarioId: scenario.id ?? null,
@@ -137,6 +138,21 @@ function mergeScenario(theme, scenario) {
   }
 }
 
+// Compose a theme skin with a pre-loaded scenario object. Hosts that load
+// scenarios from disk (import.meta.glob) pass the loaded scenario
+// `{ id, filesystem, _fileI18n?, ...scenario.json }`. Returns null if the
+// theme id is unknown.
+export function composeTheme(themeId, scenario = {}, lang = 'en') {
+  const base = THEME_REGISTRY[themeId]
+  if (!base) return null
+  const theme = applyI18n(base, lang)
+  const localized = localizeScenario(scenario ?? {}, lang)
+  return mergeScenario(theme, {
+    ...localized,
+    id: localized.id ?? scenario?.id ?? null
+  })
+}
+
 // Skin fields a custom bundle may override for a fully bespoke look.
 const SKIN_KEYS = [
   'palette', 'font', 'fontSize', 'crt', 'banner', 'screensaver',
@@ -148,9 +164,7 @@ const SKIN_KEYS = [
 // scenario.json plus a `files` map (path -> raw text, front-matter and all) and
 // an optional base `theme` id to skin it.
 export function composeCustomScenario(bundle, lang = 'en') {
-  if (!bundle || typeof bundle !== 'object' || Array.isArray(bundle)) {
-    throw new Error('scenario bundle must be a JSON object')
-  }
+  validateBundle(bundle)
   const baseId =
     bundle.theme && THEME_REGISTRY[bundle.theme]
       ? bundle.theme
