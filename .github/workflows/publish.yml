@@ -1,22 +1,38 @@
 name: publish
 
-# Publica no npm ao empurrar uma tag v* (ex.: npm version patch && git push --follow-tags).
-# Requer o secret NPM_TOKEN (npmjs.com → Access Tokens → Automation).
+# Publica no npm ao empurrar uma tag v* (ex.: npm version patch && git push --follow-tags)
+# ou via workflow_dispatch (pra republicar a versão que já está no package.json).
+#
+# Autentica via OIDC — sem NPM_TOKEN, sem OTP.
+# Configuração única no npmjs.com (Package → Settings → Trusted Publisher):
+#   Organization or user:  flippelt
+#   Repository:            rpgterm-engine
+#   Workflow filename:     publish.yml
+#   Allowed actions:       npm publish
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
-      - run: npm install
+          package-manager-cache: false
+
+      # Trusted publishing precisa do npm CLI ≥ 11.5.1.
+      - run: npm install -g npm@latest
+
+      - run: npm ci
       - run: npm test
       - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
