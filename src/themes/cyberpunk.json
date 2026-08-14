@@ -51,7 +51,7 @@
   },
   "locks": {
     "crackDefault": 4000,
-    "decryptDefault": 1200,
+    "decryptDefault": 2000,
     "crackLabel": "TUNNELING DEMON",
     "decryptLabel": "RESOLVING KEY HASH"
   },

@@ -40,7 +40,7 @@
   },
   "locks": {
     "crackDefault": 5500,
-    "decryptDefault": 1400,
+    "decryptDefault": 2200,
     "crackLabel": "ENHANCING ENCRYPTED FRAME",
     "decryptLabel": "RESOLVING IMPLANT"
   },

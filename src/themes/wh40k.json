@@ -40,7 +40,7 @@
   },
   "locks": {
     "crackDefault": 8000,
-    "decryptDefault": 2000,
+    "decryptDefault": 2800,
     "crackLabel": "RECITING UNAUTHORIZED LITANY",
     "decryptLabel": "INTONING SACRED KEY"
   },

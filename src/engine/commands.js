@@ -754,7 +754,7 @@ export function buildDecryptLines(theme, path, node, key, unlock, fs, t = makeT(
       }
     ]
   }
-  const duration = node.decryptTime ?? theme.locks?.decryptDefault ?? 1500
+  const duration = node.decryptTime ?? theme.locks?.decryptDefault ?? 2300
   const label =
     node.decryptLabel ?? theme.locks?.decryptLabel ?? 'DECRYPTING'
   return [

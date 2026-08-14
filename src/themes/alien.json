@@ -40,7 +40,7 @@
   },
   "locks": {
     "crackDefault": 6000,
-    "decryptDefault": 1500,
+    "decryptDefault": 2300,
     "crackLabel": "BYPASSING ICE",
     "decryptLabel": "RUNNING KEY"
   },

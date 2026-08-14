@@ -40,7 +40,7 @@
   },
   "locks": {
     "crackDefault": 7000,
-    "decryptDefault": 1800,
+    "decryptDefault": 2600,
     "crackLabel": "TERMLINK HACKING SUBROUTINE",
     "decryptLabel": "PARSING DICTIONARY"
   },

@@ -40,7 +40,7 @@
   },
   "locks": {
     "crackDefault": 5000,
-    "decryptDefault": 1500,
+    "decryptDefault": 2300,
     "crackLabel": "BRUTE-FORCING",
     "decryptLabel": "VERIFYING KEY"
   },

@@ -40,7 +40,7 @@
   },
   "locks": {
     "crackDefault": 6000,
-    "decryptDefault": 1600,
+    "decryptDefault": 2400,
     "crackLabel": "BREACHING IMPERIAL CIPHER",
     "decryptLabel": "INTONING SANCTIONED KEY"
   },
