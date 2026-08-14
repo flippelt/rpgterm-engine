@@ -1,5 +1,6 @@
 {
   "id": "dataslate",
+  "shortName": "DATASLATE",
   "name": "Dataslate — Departmento Munitorum",
   "header": "ADEPTUS ADMINISTRATUM // DATASLATE MK.III",
   "prompt": "++slate++",
@@ -16,7 +17,15 @@
   "fontSize": "18px",
   "crt": {
     "glow": "7px",
-    "typeSpeed": 13
+    "typeSpeed": 13,
+    "scanlines": 0.08,
+    "flicker": 0,
+    "curve": 0,
+    "bloom": 0.6,
+    "bezel": "#161616",
+    "bezelHi": "#2c2c2a",
+    "led": "#ffd24a",
+    "plate": "MUNITORUM"
   },
   "screensaver": "sweep",
   "sounds": {
@@ -31,7 +40,7 @@
   },
   "locks": {
     "crackDefault": 6000,
-    "decryptDefault": 1600,
+    "decryptDefault": 2400,
     "crackLabel": "BREACHING IMPERIAL CIPHER",
     "decryptLabel": "INTONING SANCTIONED KEY"
   },
