@@ -79,9 +79,31 @@ export function buildUnlockExtras(theme: unknown, path: string, node: VfsFile, t
 // --- scenario ---
 export function parseFrontMatter(raw: string): ParsedFile
 export function buildFilesystem(entries: FileEntry[]): Vfs
+export function applyI18n<T>(obj: T, lang?: string): T
+export function localizeScenario(
+  scenario: Record<string, unknown>,
+  lang?: string
+): Record<string, unknown>
+export function mergeScenario(
+  theme: Record<string, unknown>,
+  scenario: Record<string, unknown>
+): Record<string, unknown>
+export function composeTheme(
+  themeId: string,
+  scenario?: Record<string, unknown>,
+  lang?: string
+): Record<string, unknown> | null
 export function composeCustomScenario(bundle: Record<string, unknown>, lang?: string): Record<string, unknown>
 export const THEME_REGISTRY: Record<string, Record<string, unknown>>
 export const THEMES: Record<string, unknown>[]
+
+// --- schema ---
+export const scenarioSchema: Record<string, unknown>
+export const frontmatterSchema: Record<string, unknown>
+export function validateAgainstSchema(data: unknown, schema: Record<string, unknown>): string[]
+export function validateScenario(data: unknown): string[]
+export function validateFrontMatter(meta: unknown): string[]
+export function validateBundle(bundle: Record<string, unknown>): Record<string, unknown>
 
 // --- i18n ---
 export function makeT(lang?: string): (key: string, params?: Record<string, unknown>) => string | string[]

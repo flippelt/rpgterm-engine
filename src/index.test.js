@@ -3,6 +3,10 @@ import {
   parseFrontMatter,
   buildFilesystem,
   composeCustomScenario,
+  composeTheme,
+  validateBundle,
+  validateScenario,
+  validateFrontMatter,
   runCommand,
   makeT
 } from './index.js'
@@ -60,5 +64,73 @@ describe('rpgterm-engine public API', () => {
     const lines = runCommand('volume', { theme, fs: theme.filesystem, cwd: '/', unlocked: new Set(), t: makeT('en') })
     expect(Array.isArray(lines)).toBe(true)
     expect(lines.length).toBeGreaterThan(0)
+  })
+})
+
+describe('composeTheme (pre-loaded scenario)', () => {
+  it('returns null for an unknown theme id', () => {
+    expect(composeTheme('nope', { id: 'x' })).toBeNull()
+  })
+
+  it('merges a loaded filesystem onto the skin', () => {
+    const fs = buildFilesystem([{ path: '/note.md', content: 'hi', meta: {} }])
+    const theme = composeTheme('ibm', { id: 'workstation', name: 'Halden', filesystem: fs, motd: ['ready'] })
+    expect(theme.scenarioId).toBe('workstation')
+    expect(theme.scenarioName).toBe('Halden')
+    expect(theme.motd).toEqual(['ready'])
+    expect(theme.filesystem['/note.md'].content).toBe('hi')
+    expect(theme.palette).toBeTruthy()
+  })
+
+  it('matches composeCustomScenario for an equivalent bundle', () => {
+    const bundle = {
+      theme: 'ibm',
+      id: 'demo',
+      name: 'Op',
+      motd: ['hi'],
+      files: { '/a.txt': 'x' }
+    }
+    const custom = composeCustomScenario(bundle)
+    const fs = buildFilesystem(
+      Object.entries(bundle.files).map(([path, raw]) => {
+        const { meta, content } = parseFrontMatter(raw)
+        return { path, content, meta }
+      })
+    )
+    const fromDisk = composeTheme('ibm', { id: 'demo', name: 'Op', motd: ['hi'], filesystem: fs })
+    expect(fromDisk.scenarioId).toBe(custom.scenarioId)
+    expect(fromDisk.motd).toEqual(custom.motd)
+    expect(fromDisk.filesystem['/a.txt'].content).toBe(custom.filesystem['/a.txt'].content)
+  })
+})
+
+describe('schema', () => {
+  it('accepts a well-formed scenario.json', () => {
+    expect(validateScenario({
+      id: 'workstation',
+      name: 'Halden',
+      login: { password: 'HALDEN' },
+      tracer: { seconds: 30 },
+      motd: ['hi'],
+      commands: { ver: ['PC-DOS'] }
+    })).toEqual([])
+  })
+
+  it('flags a typed-wrong field', () => {
+    const errors = validateScenario({ login: { password: 12 } })
+    expect(errors.some((e) => e.includes('login.password'))).toBe(true)
+  })
+
+  it('accepts known front-matter and flags a bad type', () => {
+    expect(validateFrontMatter({ locked: true, crackDC: 12, password: 'KEY' })).toEqual([])
+    expect(validateFrontMatter({ crackDC: 'twelve' }).some((e) => e.includes('crackDC'))).toBe(true)
+  })
+
+  it('validateBundle throws a listed error on a bad files map', () => {
+    expect(() => validateBundle({ files: ['a'] })).toThrow(/files/)
+  })
+
+  it('composeCustomScenario rejects a bundle that fails the schema', () => {
+    expect(() => composeCustomScenario({ motd: 'not-an-array', files: {} })).toThrow(/invalid scenario bundle/)
   })
 })

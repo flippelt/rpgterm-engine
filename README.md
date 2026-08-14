@@ -26,7 +26,8 @@ npm install rpgterm-engine
 - **Sistema de arquivos virtual** (`normalizePath`, `getNode`, `listDir`, `buildFilesystem`)
 - **Interpretador de comandos** (`runCommand`, `complete`) — ls/cd/cat/crack/decrypt/unlock/check…
 - **Mecânicas**: crack (força bruta / DC), tracer & recon (`effTracer`, `scanTier`), decrypt estilo Wordle (`scoreGuess`, `pickWord`, `isWin`, `rollLuck`)
-- **Cenários** (`parseFrontMatter`, `composeCustomScenario`) + os 8 skins de tema (`THEMES`, `THEME_REGISTRY`)
+- **Cenários** (`parseFrontMatter`, `composeTheme`, `composeCustomScenario`) + os 8 skins de tema (`THEMES`, `THEME_REGISTRY`)
+- **Schema** (`src/schema/scenario.schema.json`, `src/schema/frontmatter.schema.json`, `validateBundle`) — contrato compartilhado com o terminal e o scenario-forge
 - **Markdown → linhas** (`renderMarkdown`)
 - **Compartilhamento** (`encodeBundle`, `decodeBundle`, `shareUrl`)
 - **i18n** (`makeT`, `SUPPORTED_LANGS`)
@@ -69,6 +70,29 @@ runCommand('ls', ctx)
 - **Immersive Terminal for RPGs** — o terminal jogável (UI React em cima deste motor).
 - **scenario-forge** — editor desktop que monta os cenários; tem um teste de paridade rodando
   contra este pacote, garantindo que o que o editor exporta é exatamente o que o terminal lê.
+
+### Schema
+
+O JSON Schema é a fonte do contrato. Importe o validador (zero deps) ou o
+arquivo cru via subpath:
+
+```js
+import { validateBundle, validateScenario, validateFrontMatter } from 'rpgterm-engine'
+import scenarioSchema from 'rpgterm-engine/schema'
+import frontmatterSchema from 'rpgterm-engine/schema/frontmatter'
+
+validateBundle(bundle)              // throws on a bad GM-pasted bundle
+validateScenario(scenarioJson)      // string[] of path-prefixed errors
+validateFrontMatter({ locked: true, crackDC: 12 })
+```
+
+`composeCustomScenario` valida o bundle contra o schema antes de montar o
+tema. Campos extra são permitidos (round-trip de ferramentas); tipos errados
+não.
+
+Hosts que carregam cenários do disco (`import.meta.glob`) devem chamar
+`composeTheme(themeId, loadedScenario, lang)` — o engine aplica i18n, merge
+da skin e o filesystem já construído. Não reimplemente isso no host.
 
 ## Dev
 ```bash
