@@ -103,7 +103,15 @@ npm run test:watch
 
 ## Publicação
 `npm version <patch|minor|major>` e empurrar a tag (`git push --follow-tags`) dispara o
-workflow `publish.yml`, que roda os testes e publica no npm via `NPM_TOKEN`.
+workflow `publish.yml`. A autenticação é **OIDC** (trusted publisher) — não usa
+`NPM_TOKEN` nem OTP. Uma vez no npmjs.com:
+
+Package → Settings → Trusted Publisher → GitHub Actions
+
+- Organization or user: `flippelt`
+- Repository: `rpgterm-engine`
+- Workflow filename: `publish.yml`
+- Allowed actions: `npm publish`
 
 ## Licença
 MIT © Felipe Lippelt
