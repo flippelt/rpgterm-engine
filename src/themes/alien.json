@@ -1,5 +1,6 @@
 {
   "id": "alien",
+  "shortName": "MU/TH/UR",
   "name": "MU/TH/UR 6000",
   "header": "WEYLAND-YUTANI CORP // INTERFACE 2037",
   "prompt": "MU/TH/UR",
@@ -16,7 +17,15 @@
   "fontSize": "18px",
   "crt": {
     "glow": "8px",
-    "typeSpeed": 14
+    "typeSpeed": 14,
+    "scanlines": 0.32,
+    "flicker": 0.7,
+    "curve": 0.7,
+    "bloom": 1,
+    "bezel": "#141414",
+    "bezelHi": "#2c2c2c",
+    "led": "#33ff33",
+    "plate": "WEYLAND-YUTANI"
   },
   "screensaver": "starfield",
   "sounds": {

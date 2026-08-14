@@ -1,5 +1,6 @@
 {
   "id": "br",
+  "shortName": "ESPER",
   "name": "Esper // Tyrell Corp.",
   "header": "ESPER MACHINE // TYRELL CORP.",
   "prompt": "esper",
@@ -16,7 +17,15 @@
   "fontSize": "20px",
   "crt": {
     "glow": "7px",
-    "typeSpeed": 12
+    "typeSpeed": 12,
+    "scanlines": 0.22,
+    "flicker": 0.4,
+    "curve": 0.5,
+    "bloom": 0.9,
+    "bezel": "#0a1218",
+    "bezelHi": "#1c2c36",
+    "led": "#9adfff",
+    "plate": "TYRELL  ESPER"
   },
   "screensaver": "rain",
   "sounds": {

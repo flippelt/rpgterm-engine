@@ -1,5 +1,6 @@
 {
   "id": "fallout",
+  "shortName": "TERMLINK",
   "name": "RobCo Termlink — Vault-Tec",
   "header": "VAULT-TEC INDUSTRIES // TERMLINK PROTOCOL",
   "prompt": "termlink",
@@ -16,7 +17,15 @@
   "fontSize": "20px",
   "crt": {
     "glow": "12px",
-    "typeSpeed": 18
+    "typeSpeed": 18,
+    "scanlines": 0.3,
+    "flicker": 0.2,
+    "curve": 0.55,
+    "bloom": 1.3,
+    "bezel": "#0c1408",
+    "bezelHi": "#223018",
+    "led": "#9eff7c",
+    "plate": "ROBCO  VAULT-TEC"
   },
   "screensaver": "bounce",
   "sounds": {

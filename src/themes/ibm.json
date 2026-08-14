@@ -1,5 +1,6 @@
 {
   "id": "ibm",
+  "shortName": "PC-DOS",
   "name": "IBM 5151 — Green Phosphor",
   "header": "IBM PERSONAL COMPUTER // PC-DOS 3.30",
   "prompt": "C:",
@@ -16,7 +17,15 @@
   "fontSize": "18px",
   "crt": {
     "glow": "9px",
-    "typeSpeed": 11
+    "typeSpeed": 11,
+    "scanlines": 0.34,
+    "flicker": 0.15,
+    "curve": 0.8,
+    "bloom": 1.1,
+    "bezel": "#c4b89a",
+    "bezelHi": "#e4dcc4",
+    "led": "#2ce642",
+    "plate": "IBM  5151"
   },
   "screensaver": "matrix",
   "sounds": {

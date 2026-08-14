@@ -1,5 +1,6 @@
 {
   "id": "wh40k",
+  "shortName": "COGITATOR",
   "name": "Cogitator // Adeptus Mechanicus",
   "header": "COGITATOR MK.IX // MARTIAN PATTERN",
   "prompt": "++cogitator++",
@@ -16,7 +17,15 @@
   "fontSize": "20px",
   "crt": {
     "glow": "10px",
-    "typeSpeed": 16
+    "typeSpeed": 16,
+    "scanlines": 0.26,
+    "flicker": 0.55,
+    "curve": 0.45,
+    "bloom": 1.15,
+    "bezel": "#1a0a08",
+    "bezelHi": "#3c1810",
+    "led": "#ff5a3c",
+    "plate": "ADEPTUS MECHANICUS"
   },
   "screensaver": "static",
   "sounds": {

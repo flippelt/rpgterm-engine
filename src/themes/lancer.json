@@ -1,5 +1,6 @@
 {
   "id": "lancer",
+  "shortName": "COMP/CON",
   "name": "COMP/CON — Union Administrative",
   "header": "OMNINET // COMP/CON v4.2.7",
   "prompt": "comp/con",
@@ -16,7 +17,15 @@
   "fontSize": "18px",
   "crt": {
     "glow": "6px",
-    "typeSpeed": 10
+    "typeSpeed": 10,
+    "scanlines": 0.18,
+    "flicker": 0.25,
+    "curve": 0.35,
+    "bloom": 0.8,
+    "bezel": "#1a1008",
+    "bezelHi": "#3d2814",
+    "led": "#ffb347",
+    "plate": "IPS-N  COMP/CON"
   },
   "screensaver": "sweep",
   "sounds": {

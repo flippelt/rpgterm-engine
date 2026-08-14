@@ -1,5 +1,6 @@
 {
   "id": "cprd",
+  "shortName": "NETWATCH",
   "name": "NetWatch — Federal Surveillance Net",
   "header": "NETWATCH // FEDERAL SURVEILLANCE NET",
   "prompt": "netwatch://",
@@ -16,7 +17,15 @@
   "fontSize": "18px",
   "crt": {
     "glow": "10px",
-    "typeSpeed": 8
+    "typeSpeed": 8,
+    "scanlines": 0.2,
+    "flicker": 1,
+    "curve": 0.4,
+    "bloom": 1.4,
+    "bezel": "#120018",
+    "bezelHi": "#2e0c40",
+    "led": "#ff2bd6",
+    "plate": "NETWATCH"
   },
   "screensaver": "starfield",
   "sounds": {

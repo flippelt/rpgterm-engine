@@ -8,7 +8,8 @@ import {
   validateScenario,
   validateFrontMatter,
   runCommand,
-  makeT
+  makeT,
+  THEMES
 } from './index.js'
 
 describe('rpgterm-engine public API', () => {
@@ -101,6 +102,20 @@ describe('composeTheme (pre-loaded scenario)', () => {
     expect(fromDisk.scenarioId).toBe(custom.scenarioId)
     expect(fromDisk.motd).toEqual(custom.motd)
     expect(fromDisk.filesystem['/a.txt'].content).toBe(custom.filesystem['/a.txt'].content)
+  })
+})
+
+describe('theme cabinet profile', () => {
+  it('every skin ships a shortName and a CRT cabinet', () => {
+    for (const theme of THEMES) {
+      expect(theme.shortName, theme.id).toMatch(/\S/)
+      expect(theme.crt.bezel, theme.id).toMatch(/^#/)
+      expect(theme.crt.led, theme.id).toMatch(/^#/)
+      expect(typeof theme.crt.scanlines, theme.id).toBe('number')
+      expect(typeof theme.crt.flicker, theme.id).toBe('number')
+      expect(typeof theme.crt.curve, theme.id).toBe('number')
+      expect(typeof theme.crt.bloom, theme.id).toBe('number')
+    }
   })
 })
 
