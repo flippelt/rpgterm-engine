@@ -1,7 +1,7 @@
 # rpgterm-engine
 
 [![npm](https://img.shields.io/npm/v/rpgterm-engine.svg)](https://www.npmjs.com/package/rpgterm-engine)
-[![license](https://img.shields.io/npm/l/rpgterm-engine.svg)](./package.json)
+[![license](https://img.shields.io/npm/l/rpgterm-engine.svg)](./LICENSE)
 
 Motor de lógica pura do [Immersive Terminal for RPGs](https://github.com/flippelt/Immersive-Terminal-for-RPGs),
 extraído para ser **fonte única** — consumido tanto pelo terminal quanto pelo editor
