@@ -44,7 +44,7 @@
     "crackLabel": "ENHANCING ENCRYPTED FRAME",
     "decryptLabel": "RESOLVING IMPLANT"
   },
-  "banner": "  _____ ____  ____  _____ ____              \n | ____/ ___||  _ \\| ____|  _ \\             \n |  _| \\___ \\| |_) |  _| | |_) |            \n | |___ ___) |  __/| |___|  _ <             \n |_____|____/|_|   |_____|_| \\_\\            \n    TYRELL CORP. — MORE HUMAN THAN HUMAN    ",
+  "banner": "┌──────────────────────────────────────────────┐\n│  ESPER PHOTO ANALYZER v3                     │\n│  TYRELL CORP. — MORE HUMAN THAN HUMAN        │\n│  off-world auth verified                     │\n│  los angeles, november 2019                  │\n└──────────────────────────────────────────────┘",
   "boot": [
     {
       "text": "[esper] photo analysis machine v3",
