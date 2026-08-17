@@ -117,6 +117,16 @@ describe('theme cabinet profile', () => {
       expect(typeof theme.crt.bloom, theme.id).toBe('number')
     }
   })
+
+  it('banners are firmware text, not boxes or figlet', () => {
+    for (const theme of THEMES) {
+      expect(theme.banner, theme.id).toMatch(/\S/)
+      expect(theme.banner, theme.id).not.toMatch(/[╔╗╚╝║┌┐└┘│]/)
+      for (const line of theme.banner.split('\n')) {
+        expect(line.length, `${theme.id}: ${line}`).toBeLessThanOrEqual(48)
+      }
+    }
+  })
 })
 
 describe('schema', () => {

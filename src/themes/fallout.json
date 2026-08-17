@@ -44,7 +44,7 @@
     "crackLabel": "TERMLINK HACKING SUBROUTINE",
     "decryptLabel": "PARSING DICTIONARY"
   },
-  "banner": "╔════════════════════════════════════════════╗\n║      ROBCO INDUSTRIES (TM)                 ║\n║      TERMLINK PROTOCOL v3.2.7              ║\n║      VAULT-TEC AUTHORIZED USE ONLY         ║\n╚════════════════════════════════════════════╝",
+  "banner": "ROBCO INDUSTRIES UNIFIED OPERATING SYSTEM\nCOPYRIGHT 2075-2077 ROBCO INDUSTRIES\n-Server 6-",
   "boot": [
     {
       "text": "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL",

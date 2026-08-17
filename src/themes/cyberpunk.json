@@ -55,7 +55,7 @@
     "crackLabel": "TUNNELING DEMON",
     "decryptLabel": "RESOLVING KEY HASH"
   },
-  "banner": "┌────────────────────────────────────────────┐\n│  >>> NETWATCH FEDERAL SURVEILLANCE NET     │\n│  >>> CLEARANCE: AGENT  //  CASE: 4127-A    │\n│  >>> AUTH: BLACK ICE DEPLOYMENT NETWORK    │\n└────────────────────────────────────────────┘",
+  "banner": ">>> NETWATCH FEDERAL SURVEILLANCE NET\n>>> CLEARANCE: AGENT\n>>> BLACK ICE DEPLOYMENT NETWORK",
   "boot": [
     {
       "text": ">>> netwatch handshake...",
