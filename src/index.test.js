@@ -117,6 +117,13 @@ describe('theme cabinet profile', () => {
       expect(typeof theme.crt.bloom, theme.id).toBe('number')
     }
   })
+
+  it('banner lines of a skin all share one width', () => {
+    for (const theme of THEMES) {
+      const widths = theme.banner.split('\n').map((l) => l.length)
+      expect(new Set(widths).size, `${theme.id}: ${widths}`).toBe(1)
+    }
+  })
 })
 
 describe('schema', () => {

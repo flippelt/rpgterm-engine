@@ -44,7 +44,7 @@
     "crackLabel": "RECITING UNAUTHORIZED LITANY",
     "decryptLabel": "INTONING SACRED KEY"
   },
-  "banner": "╔════════════════════════════════════════════╗\n║       ++ COGITATOR MK.IX ++                ║\n║       ++ MARTIAN PATTERN ++                ║\n║   ++ THE OMNISSIAH PROTECTS ALL ++         ║\n║       ++ ADEPTUS MECHANICUS ++             ║\n╚════════════════════════════════════════════╝",
+  "banner": "╔══════════════════════════════════╗\n║ ++ COGITATOR MK.IX ++            ║\n║ ++ MARTIAN PATTERN ++            ║\n║ ++ THE OMNISSIAH PROTECTS ALL ++ ║\n║ ++ ADEPTUS MECHANICUS ++         ║\n╚══════════════════════════════════╝",
   "boot": [
     {
       "text": "++ INVOCATION OF MACHINE SPIRIT ++",
