@@ -44,7 +44,7 @@
     "crackLabel": "SUBVERTING SECCOMM HANDSHAKE",
     "decryptLabel": "RESOLVING SIGIL"
   },
-  "banner": "  ____ ___  __  __ ____     ____ ___  _   _\n / ___/ _ \\|  \\/  |  _ \\   / ___/ _ \\| \\ | |\n| |  | | | | |\\/| | |_) | | |  | | | |  \\| |\n| |__| |_| | |  | |  __/  | |__| |_| | |\\  |\n \\____\\___/|_|  |_|_|      \\____\\___/|_| \\_|\n   COMPANION / CONSCIENCE — pilot interface",
+  "banner": "┌──────────────────────────────────────────────┐\n│  COMP/CON v4.2.7                             │\n│  COMPANION / CONSCIENCE — pilot interface    │\n│  OMNINET // Union Administrative             │\n│  mnesis chamber synced                       │\n└──────────────────────────────────────────────┘",
   "boot": [
     {
       "text": "[ COMP/CON v4.2.7 ]",

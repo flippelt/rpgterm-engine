@@ -117,6 +117,18 @@ describe('theme cabinet profile', () => {
       expect(typeof theme.crt.bloom, theme.id).toBe('number')
     }
   })
+
+  it('every stock banner has one width on every line', () => {
+    for (const theme of THEMES) {
+      const widths = theme.banner.split('\n').map((l) => l.length)
+      expect(new Set(widths).size, `${theme.id}: ${widths}`).toBe(1)
+    }
+    const ibm = THEMES.find((t) => t.id === 'ibm')
+    expect(ibm.banner.split('\n')[0].length).toBe(48)
+    expect(ibm.banner).toContain('IBM Personal Computer')
+    expect(ibm.banner).toContain('PC-DOS  Version 3.30')
+    expect(ibm.banner).toContain('(C) Copyright IBM Corp 1981, 1987')
+  })
 })
 
 describe('schema', () => {
