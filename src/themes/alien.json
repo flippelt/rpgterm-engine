@@ -44,7 +44,7 @@
     "crackLabel": "BYPASSING ICE",
     "decryptLabel": "RUNNING KEY"
   },
-  "banner": "┌───────────────────────────────┐\n│ MOTHER                        │\n│ WEYLAND-YUTANI MAINFRAME 6000 │\n└───────────────────────────────┘",
+  "banner": "  __  __   ___    _____   _   _   _____   ____  \n|  \\/  |  / _ \\  |_   _| | | | | | ____| |  _ \\ \n| |\\/| | | | | |   | |   | |_| | |  _|   | |_) |\n| |  | | | |_| |   | |   |  _  | | |___  |  _ < \n|_|  |_|  \\___/    |_|   |_| |_| |_____| |_| \\_\\\n         WEYLAND-YUTANI MAINFRAME 6000          ",
   "boot": [
     {
       "text": "POST...",
