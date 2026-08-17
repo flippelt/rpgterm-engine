@@ -117,6 +117,15 @@ describe('theme cabinet profile', () => {
       expect(typeof theme.crt.bloom, theme.id).toBe('number')
     }
   })
+
+  it('IBM banner box has one width on every line', () => {
+    const ibm = THEMES.find((t) => t.id === 'ibm')
+    const widths = ibm.banner.split('\n').map((l) => l.length)
+    expect(new Set(widths).size, String(widths)).toBe(1)
+    expect(ibm.banner).toContain('IBM Personal Computer')
+    expect(ibm.banner).toContain('PC-DOS  Version 3.30')
+    expect(ibm.banner).toContain('(C) Copyright IBM Corp 1981, 1987')
+  })
 })
 
 describe('schema', () => {
