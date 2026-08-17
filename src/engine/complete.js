@@ -7,7 +7,7 @@ import { normalizePath, listDir } from './filesystem.js'
 
 const BUILTINS = [
   'help', 'ls', 'cd', 'cat', 'pwd', 'whoami', 'date', 'clear', 'motd',
-  'theme', 'scenario', 'reboot', 'check', 'crack', 'decrypt', 'unlock', 'volume'
+  'theme', 'device', 'scenario', 'reboot', 'check', 'crack', 'decrypt', 'unlock', 'volume'
 ]
 const FILE_ARG = new Set(['cat', 'cd', 'ls', 'check', 'crack', 'decrypt', 'unlock'])
 
@@ -81,6 +81,10 @@ export function complete(input, ctx) {
 
   if (resolved === 'theme') {
     const ids = (ctx.themes ?? []).map((t) => t.id).filter((id) => id.startsWith(argPrefix)).sort()
+    return finishWord(input, ids)
+  }
+  if (resolved === 'device') {
+    const ids = Object.keys(ctx.theme?.devices ?? {}).filter((id) => id.startsWith(argPrefix)).sort()
     return finishWord(input, ids)
   }
   if (resolved === 'scenario') {

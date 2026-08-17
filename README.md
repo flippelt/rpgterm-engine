@@ -26,7 +26,7 @@ npm install rpgterm-engine
 - **Sistema de arquivos virtual** (`normalizePath`, `getNode`, `listDir`, `buildFilesystem`)
 - **Interpretador de comandos** (`runCommand`, `complete`) — ls/cd/cat/crack/decrypt/unlock/check…
 - **Mecânicas**: crack (força bruta / DC), tracer & recon (`effTracer`, `scanTier`), decrypt estilo Wordle (`scoreGuess`, `pickWord`, `isWin`, `rollLuck`)
-- **Cenários** (`parseFrontMatter`, `composeTheme`, `composeCustomScenario`) + os 8 skins de tema (`THEMES`, `THEME_REGISTRY`)
+- **Cenários** (`parseFrontMatter`, `composeTheme`, `composeCustomScenario`, `resolveThemeRef`, `applyDevice`) + 10 universos no seletor (`THEMES`) e o alias `dataslate` (dispositivo do Império) em `THEME_REGISTRY`. Universos: `alien`, `lancer`, `br`, `wh40k` (dispositivos `cogitator` / `dataslate`), `fallout`, `cprd`, `ibm`, `paranoia`, `expanse`, `eclipse`.
 - **Schema** (`src/schema/scenario.schema.json`, `src/schema/frontmatter.schema.json`, `validateBundle`) — contrato compartilhado com o terminal e o scenario-forge
 - **Markdown → linhas** (`renderMarkdown`)
 - **Compartilhamento** (`encodeBundle`, `decodeBundle`, `shareUrl`)

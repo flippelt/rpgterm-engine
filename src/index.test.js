@@ -9,7 +9,9 @@ import {
   validateFrontMatter,
   runCommand,
   makeT,
-  THEMES
+  THEMES,
+  THEME_REGISTRY,
+  applyDevice
 } from './index.js'
 
 describe('rpgterm-engine public API', () => {
@@ -65,6 +67,27 @@ describe('rpgterm-engine public API', () => {
     const lines = runCommand('volume', { theme, fs: theme.filesystem, cwd: '/', unlocked: new Set(), t: makeT('en') })
     expect(Array.isArray(lines)).toBe(true)
     expect(lines.length).toBeGreaterThan(0)
+  })
+
+  it('device lists Imperium packs and switches when the host injects switchDevice', () => {
+    const theme = composeTheme('wh40k', { id: 'demo' })
+    const listed = runCommand('device', { theme, fs: theme.filesystem, cwd: '/', unlocked: new Set(), t: makeT('en') })
+    expect(listed.some((l) => l.text.includes('cogitator'))).toBe(true)
+    expect(listed.some((l) => l.text.includes('dataslate'))).toBe(true)
+    const switched = []
+    const out = runCommand('device dataslate', {
+      theme,
+      fs: theme.filesystem,
+      cwd: '/',
+      unlocked: new Set(),
+      t: makeT('en'),
+      switchDevice: (id) => switched.push(id)
+    })
+    expect(switched).toEqual(['dataslate'])
+    expect(out).toEqual([])
+    const ibm = composeCustomScenario({ theme: 'ibm', id: 'demo', files: {} })
+    const none = runCommand('device', { theme: ibm, fs: ibm.filesystem, cwd: '/', unlocked: new Set(), t: makeT('en') })
+    expect(none[0].text).toMatch(/no alternate devices/)
   })
 })
 
@@ -128,6 +151,38 @@ describe('theme cabinet profile', () => {
     expect(ibm.banner).toContain('IBM Personal Computer')
     expect(ibm.banner).toContain('PC-DOS  Version 3.30')
     expect(ibm.banner).toContain('(C) Copyright IBM Corp 1981, 1987')
+  })
+
+  it('hides the dataslate alias from THEMES and maps it onto Imperium', () => {
+    expect(THEMES.some((t) => t.id === 'dataslate')).toBe(false)
+    expect(THEME_REGISTRY.dataslate.aliasOf).toBe('wh40k')
+    const slate = composeTheme('dataslate', { id: 'x' })
+    expect(slate.id).toBe('wh40k')
+    expect(slate.device).toBe('dataslate')
+    expect(slate.prompt).toBe('++slate++')
+    const cog = composeTheme('wh40k', { id: 'y' })
+    expect(cog.device).toBe('cogitator')
+    expect(cog.prompt).toBe('++cogitator++')
+    const viaScenario = composeTheme('wh40k', { id: 'z', device: 'dataslate' })
+    expect(viaScenario.device).toBe('dataslate')
+    expect(viaScenario.header).toMatch(/DATASLATE/)
+  })
+
+  it('ships paranoia, expanse and eclipse skins', () => {
+    for (const id of ['paranoia', 'expanse', 'eclipse']) {
+      const t = THEMES.find((th) => th.id === id)
+      expect(t, id).toBeTruthy()
+      expect(t.crt.bezel).toMatch(/^#/)
+      const composed = composeTheme(id, { id: 'demo' })
+      expect(composed.banner.split('\n')[0].startsWith('┌')).toBe(true)
+    }
+  })
+
+  it('applyDevice leaves a skin without devices untouched', () => {
+    const ibm = THEMES.find((t) => t.id === 'ibm')
+    const next = applyDevice(ibm, 'nope')
+    expect(next.device).toBeNull()
+    expect(next.prompt).toBe(ibm.prompt)
   })
 })
 

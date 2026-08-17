@@ -14,6 +14,7 @@
     "  clear                 limpa a tela",
     "  motd                  reexibe o banner",
     "  theme [id]            troca de sistema",
+    "  device [id]           troca o aparelho dentro do sistema",
     "  scenario [list|load]  troca de campanha dentro de um sistema",
     "  loadscenario [url]    carrega um cenário customizado (URL ou cola JSON)",
     "  sharescenario         copia um link que embute o cenário carregado",
@@ -104,6 +105,12 @@
   "theme.head": "sistemas disponíveis:",
   "theme.usage": "uso: theme <id>",
   "theme.unknown": "theme: sistema desconhecido \"{id}\"",
+
+  "device.head": "aparelhos disponíveis:",
+  "device.usage": "uso: device <id>",
+  "device.none": "este sistema não tem aparelhos alternativos.",
+  "device.unknown": "device: id desconhecido \"{id}\". disponíveis: {ids}",
+  "device.nosupport": "device: este host não troca aparelhos.",
 
   "crack.missing": "crack: operando ausente",
   "crack.nofile": "crack: {path}: arquivo inexistente",

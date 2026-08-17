@@ -1,7 +1,7 @@
 {
   "id": "wh40k",
-  "shortName": "COGITATOR",
-  "name": "Cogitator // Adeptus Mechanicus",
+  "shortName": "IMPERIUM",
+  "name": "Imperium of Man",
   "header": "COGITATOR MK.IX // MARTIAN PATTERN",
   "prompt": "++cogitator++",
   "user": "tech-priest",
@@ -68,7 +68,8 @@
   ],
   "extraHelp": [
     "  litany <name>          recite sacred subroutine",
-    "  bless <unit>           apply unction"
+    "  bless <unit>           apply unction",
+    "  device [id]            switch cogitator / dataslate"
   ],
   "unknownHint": "++ THE MACHINE SPIRIT IS DISPLEASED ++",
   "defaultScenario": "mechanicus-archive",
@@ -76,9 +77,181 @@
     "pt": {
       "extraHelp": [
         "  litany <name>          recita sub-rotina sagrada",
-        "  bless <unit>           aplica a unção"
+        "  bless <unit>           aplica a unção",
+        "  device [id]            troca cogitator / dataslate"
       ],
       "unknownHint": "++ O ESPÍRITO-MÁQUINA ESTÁ DESCONTENTE ++"
+    }
+  },
+  "defaultDevice": "cogitator",
+  "devices": {
+    "cogitator": {
+      "name": "Cogitator // Adeptus Mechanicus",
+      "shortName": "COGITATOR",
+      "header": "COGITATOR MK.IX // MARTIAN PATTERN",
+      "prompt": "++cogitator++",
+      "user": "tech-priest",
+      "palette": {
+        "bg": "#0a0202",
+        "bgSoft": "#1a0606",
+        "fg": "#e0d8a8",
+        "accent": "#ff5a3c",
+        "muted": "#6a3010",
+        "error": "#ff3030"
+      },
+      "font": "'Terminal Grotesque'",
+      "fontSize": "20px",
+      "crt": {
+        "glow": "10px",
+        "typeSpeed": 16,
+        "scanlines": 0.26,
+        "flicker": 0.55,
+        "curve": 0.45,
+        "bloom": 1.15,
+        "bezel": "#1a0a08",
+        "bezelHi": "#3c1810",
+        "led": "#ff5a3c",
+        "plate": "ADEPTUS MECHANICUS"
+      },
+      "banner": "╔════════════════════════════════════════════╗\n║  ++ COGITATOR MK.IX ++                     ║\n║  ++ MARTIAN PATTERN ++                     ║\n║  ++ THE OMNISSIAH PROTECTS ALL ++          ║\n║  ++ ADEPTUS MECHANICUS ++                  ║\n╚════════════════════════════════════════════╝",
+      "screensaver": "static",
+      "sounds": {
+        "whoosh": {
+          "duration": 0.9,
+          "freqStart": 70,
+          "freqEnd": 640,
+          "tone": 0.4,
+          "type": "triangle",
+          "gain": 0.2
+        }
+      },
+      "locks": {
+        "crackDefault": 8000,
+        "decryptDefault": 2800,
+        "crackLabel": "RECITING UNAUTHORIZED LITANY",
+        "decryptLabel": "INTONING SACRED KEY"
+      },
+      "boot": [
+        {
+          "text": "++ INVOCATION OF MACHINE SPIRIT ++",
+          "type": "muted"
+        },
+        {
+          "text": "++ litany of activation: spoken ++",
+          "type": "muted"
+        },
+        {
+          "text": "++ sacred oils: applied ++",
+          "type": "muted"
+        },
+        {
+          "text": "++ THE OMNISSIAH PROTECTS ++",
+          "type": "ok"
+        },
+        {
+          "text": ""
+        }
+      ],
+      "extraHelp": [
+        "  litany <name>          recite sacred subroutine",
+        "  bless <unit>           apply unction",
+        "  device [id]            switch cogitator / dataslate"
+      ],
+      "unknownHint": "++ THE MACHINE SPIRIT IS DISPLEASED ++",
+      "i18n": {
+        "pt": {
+          "extraHelp": [
+            "  litany <name>          recita sub-rotina sagrada",
+            "  bless <unit>           aplica a unção",
+            "  device [id]            troca cogitator / dataslate"
+          ],
+          "unknownHint": "++ O ESPÍRITO-MÁQUINA ESTÁ DESCONTENTE ++"
+        }
+      }
+    },
+    "dataslate": {
+      "name": "Dataslate — Departmento Munitorum",
+      "shortName": "DATASLATE",
+      "header": "ADEPTUS ADMINISTRATUM // DATASLATE MK.III",
+      "prompt": "++slate++",
+      "user": "adept",
+      "palette": {
+        "bg": "#0a0a0c",
+        "bgSoft": "#15140e",
+        "fg": "#f0d890",
+        "accent": "#ffd24a",
+        "muted": "#6b5a32",
+        "error": "#ff3b30"
+      },
+      "font": "'3270 Nerd Font Mono'",
+      "fontSize": "18px",
+      "crt": {
+        "glow": "7px",
+        "typeSpeed": 13,
+        "scanlines": 0.08,
+        "flicker": 0,
+        "curve": 0,
+        "bloom": 0.6,
+        "bezel": "#161616",
+        "bezelHi": "#2c2c2a",
+        "led": "#ffd24a",
+        "plate": "MUNITORUM"
+      },
+      "banner": "╔══════════════════════════════════════════╗\n║  ++ IMPERIAL DATASLATE  MK.III ++        ║\n║  ++ DEPARTMENTO MUNITORUM ++             ║\n║  ++ FOR THE GOD-EMPEROR OF MANKIND ++    ║\n╚══════════════════════════════════════════╝",
+      "screensaver": "sweep",
+      "sounds": {
+        "whoosh": {
+          "duration": 0.6,
+          "freqStart": 200,
+          "freqEnd": 1500,
+          "tone": 0.6,
+          "type": "triangle",
+          "gain": 0.18
+        }
+      },
+      "locks": {
+        "crackDefault": 6000,
+        "decryptDefault": 2400,
+        "crackLabel": "BREACHING IMPERIAL CIPHER",
+        "decryptLabel": "INTONING SANCTIONED KEY"
+      },
+      "boot": [
+        {
+          "text": "++ slate spirit roused ++",
+          "type": "muted"
+        },
+        {
+          "text": "++ aquila seal verified ++",
+          "type": "muted"
+        },
+        {
+          "text": "++ ADEPTUS ADMINISTRATUM — CLEARANCE: ADEPT ++",
+          "type": "ok"
+        },
+        {
+          "text": "++ THE EMPEROR PROTECTS ++",
+          "type": "ok"
+        },
+        {
+          "text": ""
+        }
+      ],
+      "extraHelp": [
+        "  aquila                recite the oath of loyalty",
+        "  vox <unit>            open a vox-channel",
+        "  device [id]            switch cogitator / dataslate"
+      ],
+      "unknownHint": "++ INPUT NOT SANCTIONED. THE EMPEROR IS WATCHING. ++",
+      "i18n": {
+        "pt": {
+          "extraHelp": [
+            "  aquila                recita o juramento de lealdade",
+            "  vox <unit>            abre um canal de vox",
+            "  device [id]            troca cogitator / dataslate"
+          ],
+          "unknownHint": "++ ENTRADA NÃO SANCIONADA. O IMPERADOR ESTÁ OBSERVANDO. ++"
+        }
+      }
     }
   }
 }

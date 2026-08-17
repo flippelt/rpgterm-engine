@@ -1,0 +1,84 @@
+{
+  "id": "expanse",
+  "shortName": "UNN",
+  "name": "UNN Ops Console",
+  "header": "UNN CIC // OPS",
+  "prompt": "ops",
+  "user": "officer",
+  "palette": {
+    "bg": "#041018",
+    "bgSoft": "#0a1c28",
+    "fg": "#9ad4ff",
+    "accent": "#e8f4ff",
+    "muted": "#3a6a88",
+    "error": "#ff6a4a"
+  },
+  "font": "'3270 Nerd Font Mono SemiCondensed'",
+  "fontSize": "18px",
+  "crt": {
+    "glow": "5px",
+    "typeSpeed": 10,
+    "scanlines": 0.12,
+    "flicker": 0.08,
+    "curve": 0.2,
+    "bloom": 0.7,
+    "bezel": "#0a1820",
+    "bezelHi": "#1a3040",
+    "led": "#9ad4ff",
+    "plate": "UNN  CIC"
+  },
+  "screensaver": "sweep",
+  "sounds": {
+    "whoosh": {
+      "duration": 0.45,
+      "freqStart": 240,
+      "freqEnd": 1600,
+      "tone": 0.65,
+      "type": "sine",
+      "gain": 0.15
+    }
+  },
+  "locks": {
+    "crackDefault": 5000,
+    "decryptDefault": 2100,
+    "crackLabel": "FORCING COMMS LOCK",
+    "decryptLabel": "UNPACKING TIGHTBEAM"
+  },
+  "banner": "┌──────────────────────────────────────────────┐\n│  UNN OPERATIONS CONSOLE                      │\n│  CIC — FLEETNET NODE 7                       │\n│  burn complete · epstein drive idle          │\n│  belt traffic on secondary                   │\n└──────────────────────────────────────────────┘",
+  "boot": [
+    {
+      "text": "UNN CIC online.",
+      "type": "ok"
+    },
+    {
+      "text": "epstein telemetry: nominal",
+      "type": "muted"
+    },
+    {
+      "text": "tightbeam buffer: 2 queued",
+      "type": "muted"
+    },
+    {
+      "text": "ops, you have the deck.",
+      "type": "ok"
+    },
+    {
+      "text": ""
+    }
+  ],
+  "extraHelp": [
+    "  sitrep                fleet and drive status",
+    "  hail <target>         open a tightbeam"
+  ],
+  "unknownHint": "ops: command not in the CIC book.",
+  "defaultScenario": "transit",
+  "i18n": {
+    "pt": {
+      "extraHelp": [
+        "  sitrep                estado da frota e do motor",
+        "  hail <target>         abre um tightbeam"
+      ],
+      "unknownHint": "ops: comando fora do livro do CIC."
+    }
+  }
+}

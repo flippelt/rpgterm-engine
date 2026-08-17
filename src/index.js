@@ -33,6 +33,8 @@ export {
   applyI18n,
   localizeScenario,
   mergeScenario,
+  applyDevice,
+  resolveThemeRef,
   THEME_REGISTRY,
   THEMES
 } from './engine/scenario.js'
