@@ -44,7 +44,7 @@
     "crackLabel": "BRUTE-FORCING",
     "decryptLabel": "VERIFYING KEY"
   },
-  "banner": "┌────────────────────────────────────────────┐\n│  IBM Personal Computer                     │\n│  PC-DOS  Version 3.30                      │\n│  (C) Copyright IBM Corp 1981, 1987         │\n└────────────────────────────────────────────┘",
+  "banner": "┌──────────────────────────────────────────────┐\n│  IBM Personal Computer                       │\n│  PC-DOS  Version 3.30                        │\n│  (C) Copyright IBM Corp 1981, 1987           │\n└──────────────────────────────────────────────┘",
   "boot": [
     {
       "text": "POST...",
