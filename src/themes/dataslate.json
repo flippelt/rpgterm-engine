@@ -44,7 +44,7 @@
     "crackLabel": "BREACHING IMPERIAL CIPHER",
     "decryptLabel": "INTONING SANCTIONED KEY"
   },
-  "banner": "╔══════════════════════════════════════════╗\n║   ++ IMPERIAL DATASLATE  MK.III ++       ║\n║   ++ DEPARTMENTO MUNITORUM ++            ║\n║   ++ FOR THE GOD-EMPEROR OF MANKIND ++   ║\n╚══════════════════════════════════════════╝",
+  "banner": "╔══════════════════════════════════════════╗\n║  ++ IMPERIAL DATASLATE  MK.III ++        ║\n║  ++ DEPARTMENTO MUNITORUM ++             ║\n║  ++ FOR THE GOD-EMPEROR OF MANKIND ++    ║\n╚══════════════════════════════════════════╝",
   "boot": [
     {
       "text": "++ slate spirit roused ++",
