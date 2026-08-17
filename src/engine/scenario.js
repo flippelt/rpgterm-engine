@@ -2,8 +2,8 @@
 // themes/index.js (the app keeps the import.meta.glob repo-scenario loader;
 // this package owns the reusable logic). Front-matter parsing, the virtual
 // filesystem build, i18n application, and composeCustomScenario (the entry the
-// terminal uses for GM-authored bundles) all live here. The 8 theme skins ship
-// with the package so composeCustomScenario is self-contained.
+// terminal uses for GM-authored bundles) all live here. Skins ship with the
+// package so composeCustomScenario is self-contained.
 
 import alien from '../themes/alien.json'
 import lancer from '../themes/lancer.json'
@@ -13,12 +13,53 @@ import fallout from '../themes/fallout.json'
 import cyberpunk from '../themes/cyberpunk.json'
 import dataslate from '../themes/dataslate.json'
 import ibm from '../themes/ibm.json'
+import paranoia from '../themes/paranoia.json'
+import expanse from '../themes/expanse.json'
+import eclipse from '../themes/eclipse.json'
 import { pickWord } from './wordle.js'
 import { validateBundle } from '../schema/validate.js'
 
-const THEME_LIST = [alien, lancer, bladerunner, wh40k, fallout, cyberpunk, dataslate, ibm]
+const THEME_LIST = [
+  alien, lancer, bladerunner, wh40k, fallout, cyberpunk, dataslate, ibm,
+  paranoia, expanse, eclipse
+]
 export const THEME_REGISTRY = Object.fromEntries(THEME_LIST.map((t) => [t.id, t]))
-export const THEMES = THEME_LIST
+// Switcher / `theme` list: hide alias skins (dataslate → Imperium device).
+export const THEMES = THEME_LIST.filter((t) => !t.aliasOf)
+
+// Resolve a theme id that may be an alias (`dataslate` → wh40k + device).
+export function resolveThemeRef(id) {
+  const t = THEME_REGISTRY[id]
+  if (!t) return null
+  if (t.aliasOf) return { themeId: t.aliasOf, device: t.device ?? null }
+  return { themeId: t.id, device: null }
+}
+
+const DEVICE_SKIN_KEYS = [
+  'name', 'shortName', 'header', 'prompt', 'user', 'palette', 'font',
+  'fontSize', 'crt', 'banner', 'screensaver', 'sounds', 'unknownHint',
+  'extraHelp', 'boot', 'locks'
+]
+
+// Apply a named device pack (cogitator / dataslate) onto a universe skin.
+export function applyDevice(theme, deviceId, lang = 'en') {
+  const devices = theme?.devices
+  if (!devices || typeof devices !== 'object') {
+    return { ...theme, device: theme?.device ?? null }
+  }
+  const fallback =
+    (theme.defaultDevice && devices[theme.defaultDevice] && theme.defaultDevice)
+    || Object.keys(devices)[0]
+    || null
+  const id = deviceId && devices[deviceId] ? deviceId : fallback
+  if (!id) return { ...theme, device: null }
+  const pack = applyI18n({ ...devices[id] }, lang)
+  const next = { ...theme, id: theme.id, devices, defaultDevice: theme.defaultDevice, device: id }
+  for (const k of DEVICE_SKIN_KEYS) {
+    if (pack[k] != null) next[k] = pack[k]
+  }
+  return next
+}
 
 // --- front-matter --------------------------------------------------------
 // Leading `---\n ... \n---` block of flat `key: value` lines. Unquoted values
@@ -116,7 +157,7 @@ export function localizeScenario(scenario, lang) {
 // Merge a theme skin with a scenario's content. Scenario fields override theme
 // defaults; `commands` and `locks` shallow-merge.
 export function mergeScenario(theme, scenario) {
-  return {
+  const merged = {
     ...theme,
     scenarioId: scenario.id ?? null,
     scenarioName: scenario.name ?? null,
@@ -136,6 +177,10 @@ export function mergeScenario(theme, scenario) {
     commands: { ...theme.commands, ...scenario.commands },
     filesystem: scenario.filesystem ?? {}
   }
+  for (const k of SKIN_KEYS) {
+    if (scenario[k] != null) merged[k] = scenario[k]
+  }
+  return merged
 }
 
 // Compose a theme skin with a pre-loaded scenario object. Hosts that load
@@ -143,10 +188,11 @@ export function mergeScenario(theme, scenario) {
 // `{ id, filesystem, _fileI18n?, ...scenario.json }`. Returns null if the
 // theme id is unknown.
 export function composeTheme(themeId, scenario = {}, lang = 'en') {
-  const base = THEME_REGISTRY[themeId]
-  if (!base) return null
-  const theme = applyI18n(base, lang)
+  const ref = resolveThemeRef(themeId)
+  if (!ref) return null
   const localized = localizeScenario(scenario ?? {}, lang)
+  const device = localized.device ?? ref.device ?? null
+  const theme = applyDevice(applyI18n(THEME_REGISTRY[ref.themeId], lang), device, lang)
   return mergeScenario(theme, {
     ...localized,
     id: localized.id ?? scenario?.id ?? null
@@ -165,13 +211,13 @@ const SKIN_KEYS = [
 // an optional base `theme` id to skin it.
 export function composeCustomScenario(bundle, lang = 'en') {
   validateBundle(bundle)
-  const baseId =
-    bundle.theme && THEME_REGISTRY[bundle.theme]
-      ? bundle.theme
-      : THEME_REGISTRY.ibm
-        ? 'ibm'
-        : THEME_LIST[0].id
-  const theme = applyI18n(THEME_REGISTRY[baseId], lang)
+  const requested = bundle.theme && THEME_REGISTRY[bundle.theme] ? bundle.theme : null
+  const ref = resolveThemeRef(requested) ?? resolveThemeRef('ibm') ?? { themeId: THEME_LIST[0].id, device: null }
+  const theme = applyDevice(
+    applyI18n(THEME_REGISTRY[ref.themeId], lang),
+    bundle.device ?? ref.device,
+    lang
+  )
 
   const filesObj = bundle.files ?? {}
   if (typeof filesObj !== 'object' || Array.isArray(filesObj)) {

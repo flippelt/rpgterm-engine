@@ -1,0 +1,84 @@
+{
+  "id": "eclipse",
+  "shortName": "MESH",
+  "name": "Mesh Access Node",
+  "header": "MESH // EGOCAST",
+  "prompt": "mesh",
+  "user": "ego",
+  "palette": {
+    "bg": "#0a0614",
+    "bgSoft": "#140c24",
+    "fg": "#7ef0d0",
+    "accent": "#c89bff",
+    "muted": "#3a5a62",
+    "error": "#ff5a8a"
+  },
+  "font": "'3270 Nerd Font Mono'",
+  "fontSize": "18px",
+  "crt": {
+    "glow": "7px",
+    "typeSpeed": 9,
+    "scanlines": 0.16,
+    "flicker": 0.2,
+    "curve": 0.25,
+    "bloom": 0.9,
+    "bezel": "#12081c",
+    "bezelHi": "#2a1440",
+    "led": "#7ef0d0",
+    "plate": "EGOCAST"
+  },
+  "screensaver": "starfield",
+  "sounds": {
+    "whoosh": {
+      "duration": 0.55,
+      "freqStart": 160,
+      "freqEnd": 2200,
+      "tone": 0.7,
+      "type": "sine",
+      "gain": 0.14
+    }
+  },
+  "locks": {
+    "crackDefault": 5200,
+    "decryptDefault": 2300,
+    "crackLabel": "SPOOFING MESH ID",
+    "decryptLabel": "UNPACKING EGO FORK"
+  },
+  "banner": "┌──────────────────────────────────────────────┐\n│  MESH ACCESS NODE                            │\n│  EGOCAST — sleeved, authenticated            │\n│  forks: 1 queued · XP 14                     │\n│  remember: you are not your morph            │\n└──────────────────────────────────────────────┘",
+  "boot": [
+    {
+      "text": "mesh handshake…",
+      "type": "muted"
+    },
+    {
+      "text": "ego integrity: intact",
+      "type": "ok"
+    },
+    {
+      "text": "cortical stack ping: 12ms",
+      "type": "muted"
+    },
+    {
+      "text": "welcome back. the body is rented.",
+      "type": "ok"
+    },
+    {
+      "text": ""
+    }
+  ],
+  "extraHelp": [
+    "  whoami                ego / morph / fork status",
+    "  resleeve              list available morphs"
+  ],
+  "unknownHint": "mesh: no such process. check your XP.",
+  "defaultScenario": "resleeve",
+  "i18n": {
+    "pt": {
+      "extraHelp": [
+        "  whoami                estado de ego / morph / fork",
+        "  resleeve              lista morphs disponíveis"
+      ],
+      "unknownHint": "mesh: processo inexistente. confira seu XP."
+    }
+  }
+}

@@ -94,6 +94,12 @@ export function composeTheme(
   lang?: string
 ): Record<string, unknown> | null
 export function composeCustomScenario(bundle: Record<string, unknown>, lang?: string): Record<string, unknown>
+export function resolveThemeRef(id: string): { themeId: string; device: string | null } | null
+export function applyDevice(
+  theme: Record<string, unknown>,
+  deviceId?: string | null,
+  lang?: string
+): Record<string, unknown>
 export const THEME_REGISTRY: Record<string, Record<string, unknown>>
 export const THEMES: Record<string, unknown>[]
 

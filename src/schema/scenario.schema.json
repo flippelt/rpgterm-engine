@@ -12,6 +12,10 @@
       "type": "string",
       "description": "Skin id from THEME_REGISTRY. Unknown ids fall back to ibm."
     },
+    "device": {
+      "type": "string",
+      "description": "Named device pack on a universe skin (e.g. cogitator, dataslate)."
+    },
     "header": { "type": "string" },
     "prompt": { "type": "string" },
     "user": { "type": "string" },

@@ -1,0 +1,70 @@
+{
+  "id": "paranoia",
+  "shortName": "COMPUTER",
+  "name": "The Computer — Alpha Complex",
+  "header": "THE COMPUTER // FRIEND COMPUTER",
+  "prompt": "computer",
+  "user": "citizen",
+  "palette": {
+    "bg": "#1a0800",
+    "bgSoft": "#2a1000",
+    "fg": "#ffb000",
+    "accent": "#ff3b1f",
+    "muted": "#8a4a00",
+    "error": "#ff2020"
+  },
+  "font": "'3270 Nerd Font Mono'",
+  "fontSize": "18px",
+  "crt": {
+    "glow": "8px",
+    "typeSpeed": 12,
+    "scanlines": 0.3,
+    "flicker": 0.4,
+    "curve": 0.5,
+    "bloom": 1.05,
+    "bezel": "#3a1408",
+    "bezelHi": "#6a2810",
+    "led": "#ff3b1f",
+    "plate": "FRIEND COMPUTER"
+  },
+  "screensaver": "static",
+  "sounds": {
+    "whoosh": {
+      "duration": 0.7,
+      "freqStart": 90,
+      "freqEnd": 880,
+      "tone": 0.55,
+      "type": "square",
+      "gain": 0.16
+    }
+  },
+  "locks": {
+    "crackDefault": 5500,
+    "decryptDefault": 2200,
+    "crackLabel": "UNAUTHORIZED INQUIRY",
+    "decryptLabel": "CLEARANCE OVERRIDE"
+  },
+  "banner": "┌──────────────────────────────────────────────┐\n│  THE COMPUTER                                │\n│  ALPHA COMPLEX — SECTOR ULTRAVIOLET          │\n│  happiness is mandatory                      │\n│  the computer is your friend                 │\n└──────────────────────────────────────────────┘",
+  "boot": [
+    { "text": "THE COMPUTER IS YOUR FRIEND", "type": "ok" },
+    { "text": "verifying clone batch…", "type": "muted" },
+    { "text": "loyalty index: acceptable (for now)", "type": "muted" },
+    { "text": "welcome, citizen. remain happy.", "type": "ok" },
+    { "text": "" }
+  ],
+  "extraHelp": [
+    "  loyalty               report your loyalty index",
+    "  confess               volunteer a treason report"
+  ],
+  "unknownHint": "The Computer does not recognize that request. This has been noted.",
+  "defaultScenario": "briefing",
+  "i18n": {
+    "pt": {
+      "extraHelp": [
+        "  loyalty               informa seu índice de lealdade",
+        "  confess               oferece um relatório de traição"
+      ],
+      "unknownHint": "O Computador não reconhece esse pedido. Isto foi anotado."
+    }
+  }
+}

@@ -449,6 +449,33 @@ const COMMANDS = {
     return []
   },
 
+  device: (ctx) => {
+    const devices = ctx.theme?.devices
+    if (!devices || typeof devices !== 'object' || Object.keys(devices).length === 0) {
+      return [{ text: ctx.t('device.none'), type: 'muted' }]
+    }
+    const id = ctx.args[0]
+    const names = Object.keys(devices)
+    if (!id) {
+      return [
+        { text: ctx.t('device.head') },
+        ...names.map((d) => ({
+          text: `  ${d.padEnd(12)} ${devices[d].name ?? devices[d].shortName ?? ''}`,
+          type: d === ctx.theme.device ? 'ok' : 'normal'
+        })),
+        { text: ctx.t('device.usage'), type: 'muted' }
+      ]
+    }
+    if (!devices[id]) {
+      return [{ text: ctx.t('device.unknown', { id, ids: names.join(', ') }), type: 'err' }]
+    }
+    if (typeof ctx.switchDevice === 'function') {
+      ctx.switchDevice(id)
+      return []
+    }
+    return [{ text: ctx.t('device.nosupport'), type: 'err' }]
+  },
+
   crack: (ctx) => {
     if (!ctx.args[0]) return [{ text: ctx.t('crack.missing'), type: 'err' }]
     const { path, node } = resolveTarget(ctx, ctx.args[0])
