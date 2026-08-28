@@ -68,7 +68,7 @@ runCommand('ls', ctx)
 
 ## Onde é usado
 - **Immersive Terminal for RPGs** — o terminal jogável (UI React em cima deste motor).
-- **scenario-forge** — editor desktop que monta os cenários; tem um teste de paridade rodando
+- **[scenario-forge](https://flippelt.github.io/scenario-forge/)** — editor **web** que monta os cenários; tem um teste de paridade rodando
   contra este pacote, garantindo que o que o editor exporta é exatamente o que o terminal lê.
 
 ### Schema
